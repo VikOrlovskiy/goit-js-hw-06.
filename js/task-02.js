@@ -7,6 +7,7 @@ const ingredients = [
   "Condiments",
 ];
 const listTitle = document.querySelector("ul");
+
 const list = function itemsCreator(arr) {
   arr.forEach((element) => {
     const createItem = document.createElement("li");
