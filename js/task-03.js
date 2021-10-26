@@ -12,19 +12,55 @@ const images = [
     alt: "Group of Horses Running",
   },
 ];
+// -----------------------------------------------------------
 const listTitle = document.querySelector(".gallery");
-listTitle.setAttribute("style", "display:flex;justify-content: space-between;");
+listTitle.setAttribute(
+  "style",
+  "list-style: none;display:flex;flex-direction: column;justify-content: space-around;"
+);
+// ------------oldUse-----------------------------------
+const listArr = [];
+images.forEach((element) => {
+  const createItem = document.createElement("li");
+  createItem.setAttribute("style", "list-style: none;");
+  const addImage = createItem.insertAdjacentHTML("afterbegin", "<img></img>");
+  const imageEl = createItem.querySelector("img");
+  imageEl.src = element.url;
+  imageEl.alt = element.alt;
+  imageEl.height = 150;
+  return listArr.push(createItem);
+});
 
-const list = function itemsCreator(arr) {
-  arr.forEach((element) => {
-    const createItem = document.createElement("li");
-    createItem.setAttribute("style", "list-style: none;");
-    const pushItem = listTitle.append(createItem);
-    const addImage = createItem.insertAdjacentHTML("afterbegin", "<img></img>");
-    const imageEl = createItem.querySelector("img");
-    imageEl.src = element.url;
-    imageEl.alt = element.alt;
-    imageEl.height = 150;
+listTitle.append(...listArr);
+// ----------------newUse-----------------------------------------
+const listNew = images.map((element) => {
+  const createItemNew = document.createElement("li");
+  const addImageNew = createItemNew.insertAdjacentHTML(
+    "afterbegin",
+    "<img></img>"
+  );
+  const imageElNew = createItemNew.querySelector("img");
+  imageElNew.src = element.url;
+  imageElNew.alt = element.alt;
+  imageElNew.height = 50;
+  return createItemNew;
+});
+
+listTitle.append(...listNew);
+// ----------------newUse+function-----------------------------------------
+const makeList = (option) => {
+  return option.map((element) => {
+    const createItemNew = document.createElement("li");
+    const addImageNew = createItemNew.insertAdjacentHTML(
+      "afterbegin",
+      "<img></img>"
+    );
+    const imageElNew = createItemNew.querySelector("img");
+    imageElNew.src = element.url;
+    imageElNew.alt = element.alt;
+    imageElNew.height = 50;
+    return createItemNew;
   });
 };
-console.log(list(images));
+const imageList = makeList(images);
+listTitle.append(...imageList);
