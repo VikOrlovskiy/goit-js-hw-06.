@@ -14,10 +14,7 @@ const images = [
 ];
 // -----------------------------------------------------------
 const listTitle = document.querySelector(".gallery");
-listTitle.setAttribute(
-  "style",
-  "list-style: none;display:flex;flex-direction: column;justify-content: space-around;"
-);
+listTitle.setAttribute("style", "list-style: none");
 // ------------oldUse-----------------------------------
 // const listArr = [];
 // images.forEach((element) => {
