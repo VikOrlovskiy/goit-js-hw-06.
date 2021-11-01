@@ -19,48 +19,40 @@ listTitle.setAttribute(
   "list-style: none;display:flex;flex-direction: column;justify-content: space-around;"
 );
 // ------------oldUse-----------------------------------
-const listArr = [];
-images.forEach((element) => {
-  const createItem = document.createElement("li");
-  createItem.setAttribute("style", "list-style: none;");
-  const addImage = createItem.insertAdjacentHTML("afterbegin", "<img></img>");
-  const imageEl = createItem.querySelector("img");
-  imageEl.src = element.url;
-  imageEl.alt = element.alt;
-  imageEl.height = 150;
-  return listArr.push(createItem);
-});
+// const listArr = [];
+// images.forEach((element) => {
+//   const createItem = document.createElement("li");
+//   createItem.setAttribute("style", "list-style: none;");
+//   const addImage = createItem.insertAdjacentHTML("afterbegin", "<img></img>");
+//   const imageEl = createItem.querySelector("img");
+//   imageEl.src = element.url;
+//   imageEl.alt = element.alt;
+//   imageEl.height = 150;
+//   return listArr.push(createItem);
+// });
 
-listTitle.append(...listArr);
+// listTitle.append(...listArr);
 // ----------------newUse-----------------------------------------
-const listNew = images.map((element) => {
-  const createItemNew = document.createElement("li");
-  const addImageNew = createItemNew.insertAdjacentHTML(
-    "afterbegin",
-    "<img></img>"
+const listNew = images.forEach(({ url, alt }) => {
+  listTitle.insertAdjacentHTML(
+    "beforeend",
+    `<li ><img src ="${url}",alt ="${alt}" width = "300px"></li>`
   );
-  const imageElNew = createItemNew.querySelector("img");
-  imageElNew.src = element.url;
-  imageElNew.alt = element.alt;
-  imageElNew.height = 50;
-  return createItemNew;
 });
-
-listTitle.append(...listNew);
 // ----------------newUse+function-----------------------------------------
-const makeList = (option) => {
-  return option.map((element) => {
-    const createItemNew = document.createElement("li");
-    const addImageNew = createItemNew.insertAdjacentHTML(
-      "afterbegin",
-      "<img></img>"
-    );
-    const imageElNew = createItemNew.querySelector("img");
-    imageElNew.src = element.url;
-    imageElNew.alt = element.alt;
-    imageElNew.height = 50;
-    return createItemNew;
-  });
-};
-const imageList = makeList(images);
-listTitle.append(...imageList);
+// const makeList = (option) => {
+//   return option.map((element) => {
+//     const createItemNew = document.createElement("li");
+//     const addImageNew = createItemNew.insertAdjacentHTML(
+//       "afterbegin",
+//       "<img></img>"
+//     );
+//     const imageElNew = createItemNew.querySelector("img");
+//     imageElNew.src = element.url;
+//     imageElNew.alt = element.alt;
+//     imageElNew.height = 50;
+//     return createItemNew;
+//   });
+// };
+// const imageList = makeList(images);
+// listTitle.append(...imageList);
